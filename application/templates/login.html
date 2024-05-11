@@ -1,0 +1,8 @@
+<body>
+    <form action="{{ url_for('login')}}" method="post">
+        Email: <input type="text" name="email">
+        <button type="submit">login</button>
+    </form>
+    <p><a href="{{ url_for('signup') }}">Don't have an account yet? Sign up!</a></p>
+    <p><a href="{{ url_for('home') }}">Go back to home</a></p>
+</body>

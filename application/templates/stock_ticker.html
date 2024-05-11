@@ -1,0 +1,33 @@
+<body>
+{{tick}}
+<style>
+    .var {
+        display: flex;
+        width: 700px;
+    }
+</style>
+
+<div class="var">
+    <div class="var"><a href="{{ url_for('stocks') }}">View more stocks</a></div>
+    <div class="var"><a href="{{ url_for('home') }}">Go back to home</a></div>
+</div>
+
+<div class="var">
+    <div class="var"> Date </div>
+    <div class="var"> Open </div>
+    <div class="var"> High </div>
+    <div class="var"> Low </div>
+    <div class="var"> Adj Close </div>
+</div>
+
+{% for row in data %}
+<div class="var">
+    <div class="var">{{row[0]}}</div>
+    <div class="var">{{row[1]}}</div> 
+    <div class="var">{{row[2]}}</div>
+    <div class="var">{{row[3]}}</div>
+    <div class="var">{{row[4]}}</div>
+</div>
+{% endfor %}  
+
+</body>

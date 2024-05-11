@@ -1,0 +1,7 @@
+<body>
+    {% for tick in tickers %}
+    <p><a href="{{ url_for('index_ticker_data',ticker=tick) }}">{{tick}}</a></p>
+    {% endfor %}  
+    <p><a href="{{ url_for('price') }}">Go back</a></p>
+    <p><a href="{{ url_for('home') }}">Go back to home</a></p>
+</body>

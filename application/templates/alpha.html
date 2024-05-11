@@ -1,0 +1,13 @@
+<body>
+    <form action="{{ url_for('alpha')}}" method="post">
+        <p>Asset type (stock, index, ETF):<input type="text" name="assettype"></p>
+        <p>Ticker:<input type="text" name="ticker"></p>
+        <p>Start date (yyyy-mm-dd): <input type="text" name="startdate"></p>
+        <p>End date (yyyy-mm-dd): <input type="text" name="enddate"></p>
+        <p>Position is long by default. </p>
+        <!--I don't actually know how to calculate those technical indicators for a short position-->
+        <p><button type="submit">view</button></p>
+    </form>
+    <p><a href="{{ url_for('asset') }}">Go back</a></p>
+    <p><a href="{{ url_for('home') }}">Go back to home</a></p>
+    </body>
