@@ -204,14 +204,15 @@ def trading_session_result(session_id, user_id):
         (session_id, user_id)
     )
     result = cursorObject.fetchone()
-    if result:
+    if result:    
         return render_template(
             "trading_session_result.html",
             result=result,
             overall_return=result[2],
             risk=result[3],
-            sharpe_ratio=result[4],
+            sharpe_ratio=result[4]
         )
+
     return "Trading session result not found."
 
 
@@ -300,8 +301,10 @@ def new_trading_session(user_id):
         overall_return = -float(utils.calculate_overall_return(result))
         risk = float(utils.calculate_risk(result))
         sharpe_ratio = (
-            -round(overall_return / risk, 2) if risk != 0 else 0
+            round(overall_return / risk, 2) if risk != 0 else 0
         )
+        utils.plot_cumulative_return(result)
+
         cursorObject.execute(
             "INSERT INTO Result (uID, sessionID, gain, risk, SharpeRatio) "
             "VALUES (%s, %s, %s, %s, %s)",
@@ -321,6 +324,7 @@ def new_trading_session(user_id):
         stock_tickers=stock_tickers,
         index_tickers=index_tickers,
         etf_tickers=etf_tickers,
+        image_names="cumulative_returns.png"
     )
 
 
@@ -527,7 +531,7 @@ def alpha():
             DB_Table = "ETFs"
         else:
             # Error handling and redirects to alpha.html.
-            pass
+            render_template("alpha.html")
 
         # The error handling for the ticker.
         ticker_query = "SELECT DISTINCT ticker FROM " + DB_Table + ";"
@@ -535,7 +539,7 @@ def alpha():
         tickers = [item[0] for item in cursorObject.fetchall()]
         if ticker not in tickers:
             # Error handling and redirects to alpha.html.
-            pass
+            render_template("alpha.html")
 
         # Gets price data.
         data_query = (
