@@ -24,7 +24,7 @@ def connect_database():
         db = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="mpcs53001",
+            password="20001016",
             database="TradingSystem"
         )
         return db

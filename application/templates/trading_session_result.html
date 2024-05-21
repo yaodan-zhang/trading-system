@@ -11,7 +11,7 @@
     <p><b>Risk (Standard Deviation):</b> {{ risk }}</p>
     <p><b>Sharpe Ratio:</b> {{ sharpe_ratio }}</p>
     <p><b>Cumulative Return Graph:</b></p>
-    <p><img src="{{ url_for('static', filename='cumulative_return.png' )}}" /></p>
+    <p><img src="{{ url_for('static', filename=img )}}" /></p>
     <p><a href="{{ url_for('user', user_id=result[0]) }}">Back to Trading Sessions</a></p>
 </body>
 

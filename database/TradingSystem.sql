@@ -13,7 +13,7 @@
 
 -- DROP DATABASE TradingSystem;
 
-
+DROP DATABASE TradingSystem;
 CREATE DATABASE TradingSystem;
 USE TradingSystem;
 

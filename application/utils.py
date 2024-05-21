@@ -6,6 +6,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import uuid
 
 
 def process_raw_price(row):
@@ -163,7 +164,7 @@ def calculate_risk(data):
     return risk
 
 
-def plot_cumulative_return(data):
+def plot_cumulative_return(data, session_id="", user_id=""):
     # Creates DataFrame from the price data.
     df = pd.DataFrame(
         data,
@@ -188,7 +189,7 @@ def plot_cumulative_return(data):
     plt.grid(True)
     
     # Saves the plot to a file.
-    cumulative_return_graph = "cumulative_return.png"
+    cumulative_return_graph = f"cumulative_return_{session_id}_{user_id}.png"
     plt.savefig("./static/" + cumulative_return_graph)
     plt.clf()
 

@@ -52,7 +52,7 @@ DB_Connection = mysql.connector.connect(
 DB_Connection = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="mpcs53001",
+    password="20001016",
     database="TradingSystem"
 )
 cursorObject = DB_Connection.cursor()
@@ -210,7 +210,8 @@ def trading_session_result(session_id, user_id):
             result=result,
             overall_return=result[2],
             risk=result[3],
-            sharpe_ratio=result[4]
+            sharpe_ratio=result[4],
+            img=f"cumulative_return_{session_id}_{user_id}.png"
         )
 
     return "Trading session result not found."
@@ -290,7 +291,7 @@ def new_trading_session(user_id):
         # Calculates results for the new session.
         cursorObject.execute(
             f"SELECT * FROM {table} "
-            f"WHERE sID = {underlying[0]} AND day BETWEEN '{start_date}' AND '{end_date}'"
+            f"WHERE {id_column} = {underlying[0]} AND day BETWEEN '{start_date}' AND '{end_date}'"
         )
         result = cursorObject.fetchall()
 
@@ -303,7 +304,8 @@ def new_trading_session(user_id):
         sharpe_ratio = (
             round(overall_return / risk, 2) if risk != 0 else 0
         )
-        utils.plot_cumulative_return(result)
+        utils.plot_cumulative_return(result, sessions[-1][0], user_id)
+        print(sessions[-1][0])
 
         cursorObject.execute(
             "INSERT INTO Result (uID, sessionID, gain, risk, SharpeRatio) "
@@ -323,8 +325,7 @@ def new_trading_session(user_id):
         user_id=user_id,
         stock_tickers=stock_tickers,
         index_tickers=index_tickers,
-        etf_tickers=etf_tickers,
-        image_names="cumulative_returns.png"
+        etf_tickers=etf_tickers
     )
 
 
