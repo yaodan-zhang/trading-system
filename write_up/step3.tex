@@ -1,0 +1,141 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\rfoot{Page \thepage}
+
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  commentstyle=\color{gray},
+  keywordstyle=\color{blue},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  frame=single,
+  rulecolor=\color{black},
+  captionpos=b,
+  breaklines=true,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+}
+
+\title{Project Step 3}
+\author{Siyuan Qi\\ Yaodan Zhang\\ Jiajun Lin}
+\date{May 21, 2024}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\section{Descriptions}
+\subsection*{Conceptual Database Design}
+
+This is a conceptual database design for a trading system, detailing the relationships between stocks, ETFs, indices, users, and trading sessions. In this system, users engage in trading sessions dealing with a variety of financial instruments. A user's portfolio is managed over time, with asset allocation adjusted as needed. The Sharpe Ratio is used to assess the risk-adjusted return of the investments. It includes the following specifications:
+
+\begin{itemize}
+	\item Stocks are identified by a stock ID (sId) and each stock record includes its ticker symbol, open price, high price, low price, close price, and the date of these prices.
+	\item Futures are identified by a future ID (fId) and each future record includes its ticker symbol, open price, high price, low price, close price, and the date.
+	\item Indices are identified by an index ID (iId) and each index record includes its ticker symbol, open price, high price, low price, close price, and the date.
+	\item Stocks, ETFs, and indices are interconnected through the ``contain'' relationships indicating their composition.
+	\item User trading sessions are identified by a session ID and include the start date, end date, the amount of trade, the position (long/short), and an underlying ID that connects to stocks, futures, or indices.
+	\item Users are identified by a user ID (uId) and records include the first name, last name, email, phone, and trading preferences.
+	\item The trading result is recorded with risk and return metrics to calculate the Sharpe Ratio.
+	\item Each user manages a portfolio, identified by the user ID, which records the start time, end time, and asset allocation.
+	\item User trading sessions are managed by users and connected to the assets being traded.
+\end{itemize}
+
+\clearpage
+\section{ER Diagram}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{step2_er.png}
+\caption{ER Diagram}
+\end{figure}
+
+\clearpage
+\section{Relational Schema}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{step2_rs.png}
+\caption{Relational Schemas}
+\end{figure}
+
+\clearpage
+\section{Prepare Datasets}
+
+The following details the procedure for retrieving real-world financial data to populate the trading system's database. The data acquisition will be performed using the Python `yfinance' module, which allows us to fetch historical market data from Yahoo Finance. Additionally, for the purpose of testing and demonstration, we will craft mock data for non-financial entities, simulating realistic trading scenarios. This allows us to assume the role of traders and create a dynamic dataset that reflects various user interactions and trading behaviors within the system.
+
+\subsection*{Retrieving Financial Data}
+
+The following Python code utilizes the `yfinance' library to download historical data for stocks. The `get\_stock\_data' function retrieves data points such as `Open', `Close', `High', `Low', and `Date' for a specified stock ticker. These data points are in line with the attributes defined in the Relational Schema for the `Stock' entity. Similar operations can be performed for other entities.
+
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  commentstyle=\color{gray},
+  keywordstyle=\color{blue},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  frame=single,
+  rulecolor=\color{black},
+  captionpos=b,
+  breaklines=true,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+}
+
+\bigskip
+\begin{lstlisting}[language=Python, caption=An Example to Retrieve Data]
+import yfinance as yf
+
+def get_stock_data(ticker):
+    
+    # Downloads the stock's historical data using yfinance.
+    data = yf.download(ticker, period="max")
+    
+    # Filters the dataframe to include only the required columns.
+    data = data[["Open", "Close", "High", "Low"]]
+    
+    # Resets the index to convert the "Date" index into a column.
+    data.reset_index(inplace=True)
+    
+    # Renames the columns to adhere to the relational schemas.
+    data.columns = ["date", "open", "close", "high", "low"]
+    return data
+
+# Demonstrates the function usage with Apple's stock ticker `AAPL'.
+ticker = "AOS"
+stock_data = get_stock_data(ticker)
+print(stock_data.head())
+\end{lstlisting}
+
+\subsection*{Integration with the Database}
+
+The output of the `get\_stock\_data' function is a pandas DataFrame, which can be easily exported to various formats, such as CSV, to integrate with a database.
+
+\subsection*{Sourcing Additional Data}
+
+For the non-financial entities, we will generate these data assuming the role of a mock user. Essentially, we can simulate the trading activity as if we were the trader. This approach allows us to create realistic yet fictitious data sets that can be used to test and demonstrate the functionality of the trading system database.
+
+\clearpage
+\section{How the App Works}
+
+Let us start with a description of the app.
+
+\clearpage
+\section{Queries and Results}
+\subsection{Queries 1}
+
+
+
+
+\end{document}
