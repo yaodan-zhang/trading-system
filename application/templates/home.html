@@ -1,4 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .center-screen {
+            border: solid 2px #CCC;
+            box-shadow: 4px 4px 4px #CCC;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+        }
+    </style>
+</head>
 <body>
-    <p><a href="{{ url_for('login') }}">Log in to do mock trading!</a></p>
-    <p><a href="{{ url_for('asset') }}">Look up price data for an asset.</a></p>
+    <div class="center-screen">
+        <h1> Welcome to the Trading System!</h1>
+
+        <p><a href="{{ url_for('login') }}">Log in to do mock trading!</a></p>
+        <p><a href="{{ url_for('asset') }}">Look up price data for an asset.</a></p>
+    </div>
+
 </body>
+<html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Trading Session</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var stockTickers = JSON.parse('{{ stock_tickers | tojson | safe }}');
+            var indexTickers = JSON.parse('{{ index_tickers | tojson | safe }}');
+            var etfTickers = JSON.parse('{{ etf_tickers | tojson | safe }}');
+        
+            function updateTickers() {
+                var preference = document.getElementById('preference').value;
+                var tickerSelect = document.getElementById('ticker');
+                var tickers;
+        
+                if (preference == 'stock') {
+                    tickers = stockTickers;
+                } else if (preference == 'index') {
+                    tickers = indexTickers;
+                } else if (preference == 'etf') {
+                    tickers = etfTickers;
+                }
+        
+                // Clear current options
+                tickerSelect.innerHTML = '';
+                // Add new options
+                tickers.forEach(function(ticker) {
+                    var option = document.createElement('option');
+                    option.value = ticker;
+                    option.text = ticker;
+                    tickerSelect.appendChild(option);
+                });
+            }
+        
+            // Initialize tickers on page load
+            updateTickers();
+            // Attach the event listener to the preference select element
+            document.getElementById('preference').addEventListener('change', updateTickers);
+        });
+        
+        function validateForm() {
+            var volume = document.forms["tradingForm"]["volume"].value;
+            if (isNaN(volume) || !Number.isInteger(Number(volume))) {
+                alert("Volume must be an integer");
+                return false;
+            }
+            return true;
+        }
+        </script>
+        
+</head>
+<body>
+    <h1>New Trading Session</h1>
+    <form name="tradingForm" action="{{ url_for('new_trading_session', user_id=user_id) }}" method="post" onsubmit="return validateForm()">
+        <p>Preference: 
+            <select id="preference" name="preference" onchange="updateTickers()">
+                <option value="stock">Stock</option>
+                <option value="index">Index</option>
+                <option value="etf">ETF</option>
+            </select>
+        </p>
+        <p>Ticker: 
+            <select id="ticker" name="ticker">
+                <!-- Options will be populated by JavaScript -->
+            </select>
+        </p>
+        <p>Start Date (YYYY-MM-DD): <input type="text" name="start_date"></p>
+        <p>End Date: <input type="text" name="end_date"></p>
+        <p>How much do you want to buy? (USD) <input type="text" name="volume"> </p>
+        <p><button type="submit">Add Trading Session</button></p>
+    </form>
+</body>
+</html>

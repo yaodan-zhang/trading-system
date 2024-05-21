@@ -1,5 +1,105 @@
 <!--TO DO-->
 <!--PART I - Display all user trading session headers,
-each with a link to direct to its Result Table record-->
+each with a link to direct to its Result Table -->
 
-<!--PART II - Also a button to link to the creation of a new trading session-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trading Sessions</title>
+    <style>
+        .container {
+            display: flex;
+        }        
+        .profile {
+            background-color: #defafd;
+            flex: 1;
+            padding: 20px;
+            border-right: 1px solid #ccc;
+        }
+        .trading-sessions {
+            flex: 2;
+            padding: 20px;
+        }
+        .actions {
+            margin-top: 20px;
+        }
+
+        .trading-sessions table {
+        width: 100%;
+        border-collapse: collapse;
+         }
+        .trading-sessions th, .trading-sessions td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .trading-sessions th {
+            background-color: #f2f2f2;
+        }
+</style>
+
+    </style>
+</head>
+<body>
+    <h1>{{ message }}</h1>
+    <div class="container">
+        <div class="profile">
+            <h2>Profile</h2>
+            <ul>
+                <p><b>User ID:</b> {{ userid }}</p>
+                <p><b>First Name:</b> {{ user[1] }}</p>
+                <p><b>Last Name:</b> {{ user[2] }}</p>
+                <p><b>Phone:</b> {{ user[3] }}</p>
+                <p><b>Email:</b> {{ user[4] }}</p>
+                <p><b>Preferences:</b> {{ user[5] }}</p>
+            </ul>
+        </div>
+        <div class="trading-sessions">
+            <h2>Trading Sessions</h2>
+            {% if trading_sessions %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Session ID</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Volume</th>
+                            <th>Underlying ID</th>
+                            <th>Position</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for session in trading_sessions %}
+                            <tr>
+                                <td>{{ session[0] }}</td>
+                                <td>{{ session[2] }}</td>
+                                <td>{{ session[3] }}</td>
+                                <td>{{ session[4] }}</td>
+                                <td>{{ session[5] }}</td>
+                                <td>{{ session[6] }}</td>
+                                <td><a href="{{ url_for('trading_session_result', session_id=session[0], user_id=session[1]) }}">View Result</a></td>
+                                <td>
+                                    <form action="{{ url_for('delete_trading_session', session_id=session[0], user_id=session[1]) }}" method="post" style="display:inline;">
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No trading sessions found for this user.</p>
+            {% endif %}
+            <div class="actions">
+                <p><a href="{{ url_for('portfolio', user_id=userid) }}">View Portfolio</a></p>
+                <p><a href="{{ url_for('new_trading_session', user_id=userid) }}">Add New Trading Session</a></p>
+                <p><a href="{{ url_for('home') }}">Return to Home</a></p>
+            </div>
+        
+        </div>
+
+    </div>
+
+</body>
+</html>

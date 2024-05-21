@@ -51,7 +51,7 @@ FOREIGN KEY (iID) REFERENCES Indices(iID)
 
 # We remove AUM since it can be queried from UserTradingSessions
 CREATE TABLE Users(
-uID INTEGER,
+uID INTEGER NOT NULL AUTO_INCREMENT,
 firstName VARCHAR(20) DEFAULT "no first name",
 lastName VARCHAR(20) DEFAULT "no last name",
 phone VARCHAR(20) DEFAULT "000-000-0000",
@@ -64,12 +64,12 @@ CHECK (preferences IN ("stock","index","ETF","stock&index","stock&ETF","index&ET
 # Underlying id: p means asset is a portfolio
 # others e.g., s0 - s50, i0-i5, e0-e30 refer to sID, iID, eID
 CREATE TABLE UserTradingSessions(
-sessionID INTEGER NOT NULL,
+sessionID INTEGER NOT NULL AUTO_INCREMENT,
 uID INTEGER NOT NULL,
 startDay DATE NOT NULL,
 endDay DATE NOT NULL,
 volume INTEGER DEFAULT 1,
-underlyingID VARCHAR(10) NOT NULL,
+underlyingID VARCHAR(255) NOT NULL,
 positionLS VARCHAR(1) DEFAULT "L",
 PRIMARY KEY (sessionID, uID),
 CHECK (volume > 0),
@@ -88,10 +88,7 @@ risk DECIMAL(10,2) NOT NULL,
 SharpeRatio DECIMAL(10,2) NOT NULL,
 PRIMARY KEY (uID, sessionID),
 FOREIGN KEY (uID) REFERENCES Users(uID),
-FOREIGN KEY (sessionID) REFERENCES UserTradingSessions(sessionID),
-CHECK (gain >= 0),
-CHECK (risk > 0),
-CHECK (SharpeRatio >= 0)
+FOREIGN KEY (sessionID) REFERENCES UserTradingSessions(sessionID)
 );
 
 # We remove the start and end day of the portfolio to make it corresponds to a session's start and end day,
@@ -99,7 +96,7 @@ CHECK (SharpeRatio >= 0)
 CREATE TABLE Portfolio(
 uID INTEGER NOT NULL,
 sessionID INTEGER NOT NULL,
-assetAllocation JSON, # weights must add up to 1
+weight Decimal(10,2) DEFAULT 1,
 PRIMARY KEY (uID, sessionID),
 FOREIGN KEY (uID) REFERENCES Users(uID),
 FOREIGN KEY (sessionID) REFERENCES UserTradingSessions(sessionID)
@@ -111,3 +108,6 @@ FOREIGN KEY (sessionID) REFERENCES UserTradingSessions(sessionID)
 SELECT * FROM Stocks;
 SELECT * FROM Indices;
 SELECT * FROM ETFs;
+SELECT * FROM Users;
+SELECT * FROM Portfolio;
+SELECT * FROM UserTradingSessions;
