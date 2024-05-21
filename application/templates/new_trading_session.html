@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>New Trading Session</title>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             var stockTickers = JSON.parse('{{ stock_tickers | tojson | safe }}');
             var indexTickers = JSON.parse('{{ index_tickers | tojson | safe }}');
             var etfTickers = JSON.parse('{{ etf_tickers | tojson | safe }}');
-        
+
             function updateTickers() {
                 var preference = document.getElementById('preference').value;
                 var tickerSelect = document.getElementById('ticker');
                 var tickers;
-        
+
                 if (preference == 'stock') {
                     tickers = stockTickers;
                 } else if (preference == 'index') {
@@ -20,24 +21,26 @@
                 } else if (preference == 'etf') {
                     tickers = etfTickers;
                 }
-        
-                // Clear current options
+
+                // Clears the select element.
                 tickerSelect.innerHTML = '';
-                // Add new options
-                tickers.forEach(function(ticker) {
+
+                // Adds the tickers as options to the select element.
+                tickers.forEach(function (ticker) {
                     var option = document.createElement('option');
                     option.value = ticker;
                     option.text = ticker;
                     tickerSelect.appendChild(option);
                 });
             }
-        
-            // Initialize tickers on page load
+
+            // Initializes the tickers when the page loads.
             updateTickers();
-            // Attach the event listener to the preference select element
+
+            // Adds an event listener to the preference select element.
             document.getElementById('preference').addEventListener('change', updateTickers);
         });
-        
+
         function validateForm() {
             var volume = document.forms["tradingForm"]["volume"].value;
             if (isNaN(volume) || !Number.isInteger(Number(volume))) {
@@ -46,20 +49,22 @@
             }
             return true;
         }
-        </script>
-        
+    </script>
+
 </head>
+
 <body>
     <h1>New Trading Session</h1>
-    <form name="tradingForm" action="{{ url_for('new_trading_session', user_id=user_id) }}" method="post" onsubmit="return validateForm()">
-        <p>Preference: 
+    <form name="tradingForm" action="{{ url_for('new_trading_session', user_id=user_id) }}" method="post"
+        onsubmit="return validateForm()">
+        <p>Preference:
             <select id="preference" name="preference" onchange="updateTickers()">
                 <option value="stock">Stock</option>
                 <option value="index">Index</option>
                 <option value="etf">ETF</option>
             </select>
         </p>
-        <p>Ticker: 
+        <p>Ticker:
             <select id="ticker" name="ticker">
                 <!-- Options will be populated by JavaScript -->
             </select>
@@ -70,4 +75,5 @@
         <p><button type="submit">Add Trading Session</button></p>
     </form>
 </body>
+
 </html>

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Trading Session Result</title>
 </head>
+
 <body>
     <h1>Trading Session Result</h1>
     <p><b>Overall Return:</b> {{ overall_return }}%</p>
@@ -12,4 +14,5 @@
     <img src="{{ cumulative_return_graph }}" alt="Cumulative Return Graph">
     <p><a href="{{ url_for('user', user_id=result[1]) }}">Back to Trading Sessions</a></p>
 </body>
+
 </html>

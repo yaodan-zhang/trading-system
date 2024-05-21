@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>User Portfolio</title>
     <style>
         .container {
             display: flex;
-        }        
+        }
+
         .profile {
             background-color: #defafd;
             flex: 1;
             padding: 20px;
             border-right: 1px solid #ccc;
         }
+
         .trading-sessions {
             flex: 2;
             padding: 20px;
         }
+
         .actions {
             margin-top: 20px;
         }
@@ -24,16 +28,20 @@
             width: 100%;
             border-collapse: collapse;
         }
-        .trading-sessions th, .trading-sessions td {
+
+        .trading-sessions th,
+        .trading-sessions td {
             padding: 10px;
             border: 1px solid #ddd;
             text-align: left;
         }
+
         .trading-sessions th {
             background-color: #f2f2f2;
         }
     </style>
 </head>
+
 <body>
     <h1>User Portfolio</h1>
     <div class="container">
@@ -51,24 +59,24 @@
         <div class="trading-sessions">
             <h2>Portfolio</h2>
             {% if portfolio %}
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Session ID</th>
-                            <th>Weight</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for session in portfolio %}
-                            <tr>
-                                <td>{{ session[0] }}</td>
-                                <td>{{ session[1] }}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Session ID</th>
+                        <th>Weight</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for session in portfolio %}
+                    <tr>
+                        <td>{{ session[0] }}</td>
+                        <td>{{ session[1] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
             {% else %}
-                <p>No portfolio found for this user.</p>
+            <p>No portfolio found for this user.</p>
             {% endif %}
             <div class="actions">
                 <p><a href="{{ url_for('new_trading_session', user_id=user_id) }}">Add New Trading Session</a></p>
@@ -78,4 +86,5 @@
         </div>
     </div>
 </body>
+
 </html>

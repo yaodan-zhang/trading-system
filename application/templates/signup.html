@@ -1,11 +1,12 @@
 <body>
-<form action="{{ url_for('signup')}}" method="post">
-    <p>First name:<input type="text" name="fname"></p>
-    <p>Last name:<input type="text" name="lname"></p>
-    <p>Phone: <input type="text" name="phone"></p>
-    <p>Email: <input type="text" name="email"></p>
-    <p>Preferences (stock, index, ETF, stock&index, stock&ETF, index&ETF, all): <input type="text" name="preferences"></p>
-    <p><button type="submit">sign up</button></p>
-</form>
-<p><a href="{{ url_for('home') }}">Go back to home</a></p>
+    <form action="{{ url_for('signup')}}" method="post">
+        <p>First name:<input type="text" name="fname"></p>
+        <p>Last name:<input type="text" name="lname"></p>
+        <p>Phone: <input type="text" name="phone"></p>
+        <p>Email: <input type="text" name="email"></p>
+        <p>Preferences (stock, index, ETF, stock&index, stock&ETF, index&ETF, all): <input type="text"
+                name="preferences"></p>
+        <p><button type="submit">sign up</button></p>
+    </form>
+    <p><a href="{{ url_for('home') }}">Go back to home</a></p>
 </body>
