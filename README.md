@@ -10,4 +10,4 @@
 
 **user page:** mock trading and visualize results.
 
-The data we use in this project came from yahoo!finance.
+The data we use in this project came from yahoo!finance, the web development tool we use is Flask.
