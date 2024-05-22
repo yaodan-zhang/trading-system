@@ -9,3 +9,4 @@
 **asset:** look up stocks/indices/ETFs price data or displaying customized alphas for an asset.
 
 **user page:** mock trading and visualize results.
+The data we use in this project came from yahoo!finance.
