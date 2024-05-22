@@ -8,4 +8,4 @@
 
 **asset:** look up stocks/indices/ETFs price data or displaying customized alphas for an asset.
 
-**user page** mock trading and view results
+**user page:** mock trading and visualize results.
