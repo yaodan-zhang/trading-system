@@ -24,34 +24,4 @@ The result will be displayed on the screen, here the asset ticker is NVAX, and t
 
 ![price data](./imgs/pricedata.png)
 
-We can also select a timeframe to look up an asset's alphas in a similar way. The alphas will be displayed in the following way. Here the asset is AOS, the timeframe is from January 3rd, 2024 to March 25th, 2024, and the alphas we included are raw price movement, money flow multiplier, and the relative strength index. Those alphas are what we pre-selected which stay the same across all asset classes and tickers.
-
-![alpha1](./imgs/alpha1.png)
-
-![alpha2](./imgs/alpha2.png)
-
-
-
-The second part of the app lies in the user interation with our database. From our main page, the user can find a sign up bottom which leads to a sign-up page.
-
-![user signup](./imgs/signup.png)
-
-After signing up, the user can log in to his or her user's page. For example, below is user Jiajun Lin's page after he signs in.
-
-![user page](./imgs/usermainpage.png)
-
-On the right lists all his mock trading sessions, we can see that Jiajun currently has no mock trading session, and he can create new mock trading session by clicking "Add New Trading Session" on the right.
-
-![new trading session](./imgs/newtradingsession.png)
-
-After adding this new trading session, it will be displayed on the user's page on the right below the "Trading Sessions" header. Session ID is a uniquely identifiable number for the trading session. Position means long (L) or short (S).
-
-![trading session](./imgs/usersession.png)
-
-If clicking "View Result" for this session, the user can view the result as follows. The cumulative return graph is also visualized to the user.
-
-![trading session result](./imgs/tradingresult1.png)
-
-If more mock trading sessions are added, they will all be listed together under the "Trading Sessions" header on the user's page, and each session result is stored and ready to be viewed later. Moreover, the "View Portfolio" button leads to current portfolio weighted by each session's trading amount. Below is the portfolio infomation for the current user because the user only has one session.
-
-![portfolio](./imgs/userportfolio.png)
+We can also select a timeframe to look up an asset's alphas in a similar way. The alphas will be displayed in the following way. Here the asset is AOS, the timeframe is from January 3rd, 2024 to March 25th, 2024, and the alphas we included are raw price movement, money flow multiplier, and the relative strength index. Those alphas are what we pre-selected which stay the same across all asset classes and tick
