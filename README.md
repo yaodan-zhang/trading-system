@@ -1,4 +1,4 @@
-# Asset Database & Trading System App
+# Asset Database & Trading System Web App
 
 ## Authors: Yaodan Zhang, Jiajun Lin, Alexandra Qi
 
