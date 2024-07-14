@@ -6,7 +6,7 @@
 
 Originated from a team project from MPCS53001 Databases master's course at University of Chicago, we built an asset price database using MySQL and implemented a trading system web application based on it. Below demonstrated the usage of our application.
 
-Note: All open-source data we used in this project came from yahoo!finance, and the web development tool we used is Flask.
+Note: All open-source data we used in this project came from yahoo!finance, and the web development tool we used is Flask. The project was spoken highly of by the course professor during our final presentation.
 
 ### Part I. Asset Database
 
