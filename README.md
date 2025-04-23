@@ -1,6 +1,6 @@
 # Asset Database & Trading System Web App
 
-### Authors: Yaodan Zhang, Jiajun Lin, Alexandra Qi
+### Authors: Alexandra Qi, Yaodan Zhang, Jiajun Lin
 
 A database-driven trading system built as part of a collaborative course project. This application integrates a **MySQL relational database** with a **Python Flask web-based GUI**, enabling users to interact with trading data through efficient SQL queries.
 
