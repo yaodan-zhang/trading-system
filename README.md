@@ -16,6 +16,16 @@ Note: All open-source data we used in this project came from yahoo!finance. The 
 - **Documentation**:  
   Detailed design decisions, schema explanations, and usage instructions are provided in the `write_up/` folder.
 
+## Repository Structure
+```bash
+trading-system/
+├── application/ # Flask web application to interact with the database
+├── database/    # SQL schema + data ingestion scripts and datasets
+├── write_up/    # Project documentation and reports
+├── imgs/        # Screenshots demonstrating application usage
+└── README.md    # Main project overview (this file)
+```
+
 ## Getting Started
 
 ### Set Up the Database
