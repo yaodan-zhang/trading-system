@@ -4,9 +4,14 @@
 
 ### Overview
 
-Originated from a team project from MPCS53001 Databases master's course at University of Chicago, we built an asset price database using MySQL and implemented a trading system web application based on it. Below demonstrated the usage of our application.
+A database-driven trading system built as part of a collaborative course project. This application integrates a **MySQL relational database** with a **Python Flask web-based GUI**, enabling users to interact with trading data through efficient SQL queries.
 
-Note: All open-source data we used in this project came from yahoo!finance, and the web development tool we used is Flask. The project was spoken highly of by the course professor during our final presentation.
+Note: All open-source data we used in this project came from yahoo!finance. The project was spoken highly of by the course professor during our final presentation.
+
+### Tech Stack
+**Database**: MySQL  
+**Backend/Web Framework**: Python, Flask  
+**Tools**: SQL, ER Modeling, HTML/CSS
 
 ### Part I. Asset Database
 
