@@ -2,14 +2,10 @@
 
 This module sets up the **MySQL relational database** for the Trading System project. It includes scripts to create the database schema and automate data loading from CSV files containing Stocks, Indices, and ETFs information.
 
----
-
 ## Contents
 - `TradingSystem.sql` — Defines the database schema using SQL (tables, relationships, etc.).
 - `DB_Insert.py` — Python script to load CSV data into the database via MySQL's Python API.
 - `Stocks/`, `Indices/`, `ETFs/` — Directories containing CSV datasets.
-
----
 
 ## Prerequisites
 - **MySQL** installed and running.
@@ -20,18 +16,18 @@ This module sets up the **MySQL relational database** for the Trading System pro
   ```
 
 ## Setup Instructions
-1. Start MySQL Server  
-Ensure your MySQL server is running.
+**1. Start MySQL Server**  
+- Ensure your MySQL server is running.
 
-2. Create Database Schema  
-Run the following command to execute the schema script:
+**2. Create Database Schema**  
+- Run the following command to execute the schema script:
 ```bash
 mysql -u root -p < TradingSystem.sql
 ```
 This will create the necessary database and tables.
 
-3. Load Data into Database
-Execute the Python script to automatically load all CSV files from the Stocks/, Indices/, and ETFs/ directories:
+**3. Load Data into Database**  
+- Execute the Python script to automatically load all CSV files from the `Stocks/`, `Indices/`, and `ETFs/` directories:
 ```bash
 python DB_Insert.py
 ```
