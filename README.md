@@ -1,18 +1,51 @@
 # Asset Database & Trading System Web App
 
-## Authors: Yaodan Zhang, Jiajun Lin, Alexandra Qi
-
-### Overview
+### Authors: Yaodan Zhang, Jiajun Lin, Alexandra Qi
 
 A database-driven trading system built as part of a collaborative course project. This application integrates a **MySQL relational database** with a **Python Flask web-based GUI**, enabling users to interact with trading data through efficient SQL queries.
 
 Note: All open-source data we used in this project came from yahoo!finance. The project was spoken highly of by the course professor during our final presentation.
 
-### Tech Stack
-**Database**: MySQL  
-**Backend/Web Framework**: Python, Flask  
-**Tools**: SQL, ER Modeling, HTML/CSS
+## Project Overview
+- **Database Layer**:  
+  Relational schema designed via ER modeling and implemented in MySQL. Automated data ingestion from CSV datasets using Python.
+  
+- **Application Layer**:  
+  A Python **Flask** web interface enabling dynamic SQL queries and interaction with trading data.
 
+- **Documentation**:  
+  Detailed design decisions, schema explanations, and usage instructions are provided in the `write_up/` folder.
+
+## Getting Started
+
+### Set Up the Database
+Follow instructions in [`database/README.md`](./database/README.md) to:
+- Create the MySQL schema.
+- Load trading datasets via `DB_Insert.py`.
+
+### Run the Web Application
+Follow instructions in [`application/README.md`](./application/README.md) to:
+- Configure database connection.
+- Launch the Flask app for querying and interacting with data.
+
+## Documentation
+The [`write_up/`](./write_up/) folder contains:
+- ER diagrams
+- Schema explanations
+- Project design rationale
+- Sample queries and outputs
+
+## Tech Stack
+- **Backend**: Python, Flask
+- **Database**: MySQL
+- **Data Processing**: CSV, MySQL Connector/Python
+- **Frontend**: HTML (via Flask templates)
+- **Tools**: ER Modeling, SQL, Python Scripting
+
+## License
+This project was developed for academic purposes.
+
+## Screenshots
 ### Part I. Asset Database
 
 We used MySQL to build our asset database. We support three types of assets – stocks, indices, and ETFs. Below is the entity-relationship diagram of our database, where other components apart from asset classes relate to user interaction with the database which will be discussed later.
