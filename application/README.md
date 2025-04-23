@@ -25,7 +25,7 @@ In app.py and/or utils.py, verify:
 From the application directory:
 ```bash
 python app.py
-``
+```
 Access the app at:
 `http://127.0.0.1:5000/`
 
