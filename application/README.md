@@ -41,8 +41,8 @@ Access the app at:
 application/
 ├── app.py          # Main Flask application
 ├── utils.py        # Helper functions for DB interactions
-├── templates/      # HTML templates (if applicable)
-└── static/         # CSS/JS assets (if applicable)
+├── templates/      # HTML templates
+└── static/         # Static files
 ```
 
 ## License
