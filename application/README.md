@@ -12,16 +12,16 @@ pip install flask mysql-connector-python
 ```
 
 ## Setup & Running the Application
-**1. Ensure MySQL Database is Running**
+**1. Ensure MySQL Database is Running**  
 Confirm that:
 - Schema is created (TradingSystem.sql).
 - Data is loaded using DB_Insert.py.
 
-**2. Configure Database Connection**
+**2. Configure Database Connection**  
 In app.py and/or utils.py, verify:
 - Host, User, Password, Database name.
 
-**3. Launch the Flask App**
+**3. Launch the Flask App**  
 From the application directory:
 ```bash
 python app.py
