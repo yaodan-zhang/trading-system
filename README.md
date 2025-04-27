@@ -52,9 +52,6 @@ The [`write_up/`](./write_up/) folder contains:
 - **Frontend**: HTML (via Flask templates)
 - **Tools**: ER Modeling, SQL, Python Scripting
 
-## License
-This project was developed for academic purposes.
-
 ## Screenshots
 ### Part I. Asset Database
 
